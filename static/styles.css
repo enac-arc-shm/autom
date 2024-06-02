@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono");
+
+:root {
+	--c0: rgba(0, 0, 255, 0.02);
+	--c01: #fafaff;
+	--c1: #fdfefe;
+	--c2: #06513e;
+	--c3: #0d0a5f;
+	--c4: #0f6865;
+	--c5: #fde395;
+	--c6: #6f9ab2;
+	--c7: #000000;
+}
+
+.btn-red {
+	background-color: red;
+	color: white;
+  }
+  
+  .mdi-close::before {
+	content: "\F00D"; /* Asegúrate de que esto sea el código correcto para el icono de tache */
+  }
+
+  .btn-danger {
+	background-color: red;
+	border-color: red;
+	color: white;
+  }
+
+body {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	background: var(--c0);
+	font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+    background-color: var(--c7);
+    color: var(--c0);
+}
+
+.truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#sidebar.is-visible {
+	display: grid;
+	position: sticky;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 250px;
+	background: var(--c1);
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: auto;
+	grid-gap: 2em;
+	align-content: start;
+	background: inherit;
+}
+
+#sidebar:not(.is-visible) {
+	padding: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+#sidebar .brand {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-content: center;
+	padding: 2em 1em;
+}
+
+#sidebar .brand i.mdi {
+	font-size: 1.7em;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+#sidebar ul {
+	display: grid;
+	grid-gap: 0.2em;
+	padding: 0.5em 1em;
+}
+
+#sidebar ul li {
+	display: grid;
+}
+
+#sidebar ul li a {
+	padding: 0.2em 1em;
+	font-size: 1.2em;
+	border-radius: 50px;
+	color: rgba(0, 0, 0, 0.8);
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	grid-gap: 0.5em;
+	transition: 0.1s all ease-in-out;
+}
+
+#sidebar ul li a.mdi::before {
+	font-size: 1.5em;
+	color: var(--c3);
+}
+
+#sidebar ul a:hover, #sidebar li.active > a {
+	background: var(--c3);
+	color: var(--c1);
+}
+
+#sidebar ul li a.mdi:hover::before, #sidebar ul li.active a.mdi::before {
+	font-size: 1.5em;
+	color: var(--c1);
+}
+
+#sidebar ul > li > ul:not(.active) {
+	display: none;
+	transition: 0.5s all;
+}
+
+#sidebar ul > li > ul.active {
+	display: grid;
+	animation: fadeInLeft 1s;
+	transition: 1s all;
+	background: var(--c0);
+	border-radius: var(--radius);
+	margin: var(--margin);
+}
+
+#sidebar ul > li > ul.active li a {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.topbar {
+	position: sticky;
+	top: 0;
+	background: var(--c01);
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: auto 1fr auto;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+	align-content: center;
+	margin: var(--margin);
+	margin-right: 1em;
+	padding: 0.5em 0;
+	z-index: 3;
+}
+
+.topbar ul {
+	display: grid;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: start;
+	align-items: center;
+	grid-gap: 1.5em;
+	font-family: "Montserrat", sans-serif;
+}
+
+.topbar ul a::before {
+	font-size: 1.5em;
+}
+
+.topbar ul a {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+}
+
+.topbar .mdi-menu {
+	margin-left: 0.3em;
+}
+
+.page {
+	min-height: 90vh;
+	display: grid;
+	background-color: var(--c1);
+	padding: 0 1em;
+	border-radius: var(--radius);
+	margin: var(--margin);
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+	align-content: start;
+	overflow: hidden;
+	overflow-y: auto;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-family: "Montserrat", sans-serif;
+}
+
+.page > .heading {
+	color: var(--c3);
+	font-family: "Montserrat", sans-serif;
+	font-size: 2.5em;
+}
+
+@media screen and (max-height: 375px) {
+  body {
+    position: relative;
+    overflow: auto;
+  }
+}
+
+.card {
+  width: 80%;
+}
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 100%;
+  }
+}
+
+#editorWrapper {
+  position: relative;
+  height: 100%;
+  min-height: 45vh;
+}
+@media (min-height: 600px) {
+  #editorWrapper {
+    height: 55vh;
+  }
+}
+@media (min-height: 900px) {
+  #editorWrapper {
+    height: 65vh;
+  }
+}
+#editorWrapper #editor {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.titulo {
+	font-family: 'Arial', sans-serif; /* Fuente legible y común */
+	font-weight: bold; /* Texto en negrita */
+	font-size: 2em; /* Tamaño del texto */
+	color: #333; /* Color de texto oscuro */
+	text-align: center; /* Centrar el texto */
+	text-transform: uppercase; /* Transformar a mayúsculas */
+	letter-spacing: 2px; /* Espaciado entre letras */
+	margin: 20px 0; /* Margen superior e inferior */
+	padding: 10px; /* Relleno interno */
+	color: rgb(0, 0, 0); /* Color de texto */
+}

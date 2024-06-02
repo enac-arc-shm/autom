@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Add new document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles_sing_up.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DOcument form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles_sing_up.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles_sing_up.css') }}">
+    </head>
+    <body>
+
+      <form action="/save_info_backups" method="post">
+      
+        <h1>Back up information</h1>
+        
+        <fieldset>
+          <legend><span class="number">1</span>Document info</legend>
+          <label for="id">ID:</label>
+          <input type="text" id="id" name="id" value="{{ id }}" readonly>
+
+          <label for="path">Path:</label>
+          <input type="text" id="path" name="path">
+          
+          <label for="time">Time(In seconds):</label>
+          <input type="number" id="time" name="time">
+
+        </fieldset>
+        
+        <fieldset>
+          <legend><span class="number">2</span>Extra info</legend>
+          <label for="bio">Description:</label>
+          <textarea id="description" name="description"></textarea>
+        </fieldset>
+        <fieldset>
+        <label for="type">Type of backup:</label>
+        <select id="type" name="type">
+          <optgroup label="Files">
+            <option value="f">File (Any type of extension)</option>
+          <optgroup label="Directory">
+            <option value="d">Directory</option>
+          </optgroup>
+        </select>
+        
+        </fieldset>
+        <button type="submit">Save configurations</button>
+      </form>
+      
+    </body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>

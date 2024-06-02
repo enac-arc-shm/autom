@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CONSOLE ADMINISTRATOR</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- TechSoul - techsoul - TECHSOUL -->
+<!-- SideBar -->
+<div>
+<nav id="sidebar" class="is-visible">
+	<div class="brand">
+    <span>{{ client_data[0] }} - {{ client_data[2] }}</span>
+	</div>
+	<ul>
+		<li><a href="/" class="mdi mdi-view-dashboard"> <span>Backups</span></a></li>
+    <li><a href="/configurations" class="mdi mdi-monitor"> <span>Configurations</span></a>
+		<li><a href="/logs" class="mdi mdi-file-multiple"> <span>Logs</span></a></li>	
+	</ul>
+
+	<ul>
+		
+	</ul>
+	
+</nav>
+</div>
+<!-- TopBar -->
+<main>
+  <div class="topbar">
+	
+	<ul>
+		<li><i class="mdi mdi-menu tsize-10" onclick="sbtoggle('#sidebar')"></i></li>
+    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    <h3 class="titulo">Backups</h3>
+	</ul>
+	<div></div>	
+		<ul>
+			<li><a href="/exit" class="mdi mdi-exit-to-app"></a></li>
+			<li><a href="{{ url_for('add_doc', doc_id=last_id+1) }}" class="mdi mdi-plus btn"> Add</a></li>
+		</ul>
+</div>
+
+  <!-- Page Content -->
+  <section class="page">
+
+	<table class="edt">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Path</th>
+        <th>Time</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for id, data in files.items() %}
+      <tr>
+        <td>{{ id }}</td>
+        <td>
+          {% if data[0] == 'f' %}
+            File
+          {% elif data[0] == 'd' %}
+            Directory
+          {% endif %}
+        </td>
+        <td>{{ data[1] }}</td>
+        <td>{{ data[2] }}</td>
+        <td>{{ data[3] }}</td>
+        <td>
+          <a href="{{ url_for('del_doc', doc_id=id) }}" class="btn btn-danger">
+            <i class="mdi mdi-close"></i> Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+    
+</section>
+  
+  
+</main>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/gh/aj-techsoul/elicss@latest/eli.min.js'></script><script type="module" src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
